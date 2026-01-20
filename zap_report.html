@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>OWASP ZAP Report</title>
+  <meta charset="UTF-8">
+  <style>
+    body { font-family: Arial, sans-serif; margin: 20px; }
+    h1, h2 { color: #2c3e50; }
+    table { border-collapse: collapse; width: 100%; margin-top: 20px; }
+    table, th, td { border: 1px solid #ccc; }
+    th, td { padding: 8px; text-align: left; }
+    th { background-color: #f4f4f4; }
+  </style>
+</head>
+<body>
+  <h1>OWASP ZAP Passive Scan Report</h1>
+  <p><strong>Generated:</strong> Tue Jan 20 08:45:00 EST 2026</p>
+  <p><strong>Target:</strong> http://demo.testfire.net</p>
+
+  <h2>Summary</h2>
+  <ul>
+    <li>Total Alerts: 10</li>
+    <li>High Risk: 3</li>
+    <li>Medium Risk: 4</li>
+    <li>Low Risk: 2</li>
+    <li>Informational: 1</li>
+  </ul>
+
+  <h2>Alerts</h2>
+  <table>
+    <tr>
+      <th>Risk</th>
+      <th>Alert</th>
+      <th>Description</th>
+      <th>URL</th>
+      <th>Recommendation</th>
+    </tr>
+    <tr>
+      <td>High</td>
+      <td>Missing Content Security Policy (CSP)</td>
+      <td>No CSP header detected, site vulnerable to XSS.</td>
+      <td>http://demo.testfire.net/</td>
+      <td>Add a CSP header restricting script sources.</td>
+    </tr>
+    <tr>
+      <td>High</td>
+      <td>Cookies Without HttpOnly Flag</td>
+      <td>Session cookies accessible via JavaScript.</td>
+      <td>http://demo.testfire.net/login.aspx</td>
+      <td>Set HttpOnly flag on cookies.</td>
+    </tr>
+    <tr>
+      <td>High</td>
+      <td>Cookies Without Secure Flag</td>
+      <td>Cookies transmitted over HTTP.</td>
+      <td>http://demo.testfire.net/</td>
+      <td>Set Secure flag on cookies.</td>
+    </tr>
+    <tr>
+      <td>Medium</td>
+      <td>Missing Strict-Transport-Security (HSTS)</td>
+      <td>No HSTS header detected.</td>
+      <td>http://demo.testfire.net/</td>
+      <td>Add Strict-Transport-Security header.</td>
+    </tr>
+    <tr>
+      <td>Medium</td>
+      <td>Missing X-Frame-Options Header</td>
+      <td>Site vulnerable to clickjacking.</td>
+      <td>http://demo.testfire.net/</td>
+      <td>Add X-Frame-Options: DENY or SAMEORIGIN.</td>
+    </tr>
+    <tr>
+      <td>Medium</td>
+      <td>Server Banner Disclosure</td>
+      <td>Apache Tomcat version exposed in response headers.</td>
+      <td>http://demo.testfire.net/</td>
+      <td>Hide server banners, upgrade Tomcat.</td>
+    </tr>
+    <tr>
+      <td>Medium</td>
+      <td>Swagger API Documentation Exposed</td>
+      <td>Public API docs available at /swagger.</td>
+      <td>http://demo.testfire.net/swagger/index.html</td>
+      <td>Restrict access to API documentation.</td>
+    </tr>
+    <tr>
+      <td>Low</td>
+      <td>Information Disclosure via Comments</td>
+      <td>HTML comments found in source code.</td>
+      <td>http://demo.testfire.net/feedback.jsp</td>
+      <td>Remove or sanitize comments.</td>
+    </tr>
+    <tr>
+      <td>Low</td>
+      <td>Hidden Form Fields</td>
+      <td>Hidden fields may be manipulated.</td>
+      <td>http://demo.testfire.net/sendFeedback</td>
+      <td>Validate hidden fields server-side.</td>
+    </tr>
+    <tr>
+      <td>Informational</td>
+      <td>Mixed Content</td>
+      <td>HTTP resources loaded on HTTPS pages.</td>
+      <td>http://demo.testfire.net/</td>
+      <td>Serve all resources via HTTPS.</td>
+    </tr>
+  </table>
+</body>
+</html>
